@@ -33,7 +33,7 @@ public class OrdersRestService
 	@GetMapping(path="/getxml", produces={MediaType.APPLICATION_XML_VALUE})
 	public OrderList getOrdersAsXml()
 	{
-		Logger.info("Entering OrdersRestService.getOrdersAsXml()");
+		logger.info("Entering OrdersRestService.getOrdersAsXml()");
 		OrderList list = new OrderList();
 		try{
 			list.setOrders(service.getOrders());
