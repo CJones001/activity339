@@ -7,27 +7,39 @@ import com.gcu.model.OrderModel;
 
 public class AnotherOrdersBusinessService implements OrdersBusinessServiceInterface
 {
+	private static final Logger logger = LoggerFactory.getLogger(OrdersBusinessService.class);
+	
 	@Override
 	public void init()
 	{
+		logger.info("Entering AnotherOrdersBusinessService.init()");
+		logger.info("In the AnotherOrdersBusinessService.init()");
+		logger.info("Exiting AnotherOrdersBusinessService.init()");
 		System.out.println("In the AnotherOrdersBusinessService.init()");
 	}
 	
 	@Override
 	public void destroy()
 	{
+		logger.info("Entering AnotherOrdersBusinessService.destroy()");
+		logger.info("In the AnotherOrdersBusinessService.destroy()");
+		logger.info("Exiting AnotherOrdersBusinessService.destroy()");
 		System.out.println("In the AnotherOrdersBusinessService.destroy()");
 	}
 
 	@Override
 	public void test()
 	{
+		logger.info("Entering AnotherOrdersBusinessService.test()");
+		logger.info("In the AnotherOrdersBusinessService.test()");
+		logger.info("Exiting AnotherOrdersBusinessService.test()");
 		System.out.println("Hello from the AnotherOrdersBusinessService");
 	}
 	
 	@Override
 	public List<OrderModel> getOrders()
 	{
+		logger.info("Entering AnotherOrdersBusinessService.getOrders()");
 		// Create some Orders
 		List<OrderModel> orders = new ArrayList<OrderModel>();
 		orders.add(new OrderModel(0L, "0000000001", "Another Product 1", 1.00f, 1));
@@ -35,7 +47,8 @@ public class AnotherOrdersBusinessService implements OrdersBusinessServiceInterf
 		orders.add(new OrderModel(2L, "0000000003", "Another Product 3", 3.00f, 3));
 		orders.add(new OrderModel(3L, "0000000004", "Another Product 4", 4.00f, 4));
 		orders.add(new OrderModel(4L, "0000000005", "Another Product 5", 5.00f, 5));
-		
+
+		logger.info("Exiting AnotherOrdersBusinessService.getOrders()");
 		// Return the list of Orders
 		return orders;
 	}
