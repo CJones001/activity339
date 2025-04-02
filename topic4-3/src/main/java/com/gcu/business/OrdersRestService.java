@@ -15,6 +15,8 @@ import com.gcu.model.OrderList;
 @RequestMapping("/service")
 public class OrdersRestService
 {
+	private static final Logger logger = LoggerFactory.getLogger(OrdersBusinessService.class);
+	
 	@Autowired
 	OrdersBusinessServiceInterface service;
 	
