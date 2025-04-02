@@ -15,20 +15,32 @@ import com.gcu.model.OrderList;
 @RequestMapping("/service")
 public class OrdersRestService
 {
+	private static final Logger logger = LoggerFactory.getLogger(OrdersBusinessService.class);
+	
 	@Autowired
 	OrdersBusinessServiceInterface service;
 	
 	@GetMapping(path="/getjson", produces= {MediaType.APPLICATION_JSON_VALUE})
 	public List<OrderModel> getOrdersAsJson()
 	{
-        return service.getOrders();
+		logger.info("Entering OrdersRestService.getOrdersAsJson()");
+        	logger.info("Hello from the OrdersRestService.getOrdersAsJson()");
+       		logger.info("Exiting OrdersRestService.getOrdersAsJson()");
+        	return service.getOrders();
 	}
 
 	@GetMapping(path="/getxml", produces={MediaType.APPLICATION_XML_VALUE})
 	public OrderList getOrdersAsXml()
 	{
+		Logger.info("Entering OrdersRestService.getOrdersAsXml()");
 		OrderList list = new OrderList();
-		list.setOrders(service.getOrders());
+		try{
+			list.setOrders(service.getOrders());
+		}catch(Exception e)
+			{
+				logger.error("Exception in OrdersRestService.getOrdersAsXml()", e);
+			}
+		logger.info("Exiting OrdersRestService.getOrdersAsXml()");
 		return list;
 	}
 }
