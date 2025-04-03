@@ -43,7 +43,7 @@ public class LoginController
 			logger.error("Error in LoginController.display()");
 		}
 
-		logger.info("Exiting LoginController.display()"):
+		logger.info("Exiting LoginController.display()");
 		return "login";
 	}
 
