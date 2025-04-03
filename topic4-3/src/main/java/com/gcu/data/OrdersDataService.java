@@ -8,7 +8,8 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.gcu.data.entity.OrderEntity;
 import com.gcu.data.repository.OrdersRepository;
 import com.gcu.util.DatabaseException;
@@ -16,6 +17,8 @@ import com.gcu.util.DatabaseException;
 @Service
 public class OrdersDataService implements DataAccessInterface<OrderEntity>
 {
+	private static final Logger logger = LoggerFactory.getLogger(OrdersDataService.class);
+	
 	@Autowired
 	private OrdersRepository ordersRepository;
 	@SuppressWarnings("unused")
@@ -27,9 +30,12 @@ public class OrdersDataService implements DataAccessInterface<OrderEntity>
      */
 	public OrdersDataService(OrdersRepository ordersRepository, DataSource dataSource)
 	{
+		logger.info("Entering OrdersDataService.OrdersDataService()");
+        	logger.info("In the OrdersDataService.OrdersDataService()");
 		this.ordersRepository = ordersRepository;
-        this.dataSource = dataSource;
-        this.jdbcTemplateObject = new JdbcTemplate(dataSource);
+        	this.dataSource = dataSource;
+	        this.jdbcTemplateObject = new JdbcTemplate(dataSource);
+        	logger.info("Exiting OrdersDataService.OrdersDataService()");
 	}
 	
     /**
@@ -37,6 +43,9 @@ public class OrdersDataService implements DataAccessInterface<OrderEntity>
      */
 	public OrderEntity findById(int id)
 	{
+		logger.info("Entering OrdersDataService.findById()");
+        	logger.info("In the OrdersDataService.findById()");
+        	logger.info("Exiting OrdersDataService.findById()");
 		return null;
 	}
 
@@ -45,6 +54,8 @@ public class OrdersDataService implements DataAccessInterface<OrderEntity>
      */
     public List<OrderEntity> findAll() 
     {
+	    	logger.info("Entering OrdersDataService.findAll()");
+        	logger.info("In the OrdersDataService.findAll()");
 		List<OrderEntity> orders = new ArrayList<OrderEntity>();
 
 		try
@@ -58,13 +69,15 @@ public class OrdersDataService implements DataAccessInterface<OrderEntity>
 		} 
 		catch (Exception e)
 		{
-// Discussion: best practices and why printing stack track here is bad
-//			e.printStackTrace();
+			// Discussion: best practices and why printing stack track here is bad
+			//e.printStackTrace();
+			logger.error("Error in OrdersDataService.findAll()");
 			throw new DatabaseException(e, "The Database crashed");
 		}
 
-    	// Return the List
-    	return orders;
+	    	// Return the List
+        	logger.info("Exiting OrdersDataService.findAll()");
+	    	return orders;
     }
     
 	/**
@@ -72,6 +85,8 @@ public class OrdersDataService implements DataAccessInterface<OrderEntity>
 	 */
 	public boolean create(OrderEntity order)
 	{
+		logger.info("Entering OrdersDataService.create()");
+	        logger.info("In the OrdersDataService.create()");
 		// Example of "overriding" the CrudRepository save() because it simply is never called
 		//  You can inject a dataSource and use the jdbcTemplate to provide a customized implementation of a save() method
 		String sql = "INSERT INTO ORDERS(ORDER_NO, PRODUCT_NAME, PRICE, QUANTITY) VALUES(?, ?, ?, ?)";
@@ -86,9 +101,11 @@ public class OrdersDataService implements DataAccessInterface<OrderEntity>
 		} 
 		catch (Exception e)
 		{
+			logger.error("Error in OrdersDataService.create()");
 			e.printStackTrace();
 			throw new DatabaseException();
 		}
+	        logger.info("Exiting OrdersDataService.create()");
 		return true;
 	}
 	
@@ -97,6 +114,9 @@ public class OrdersDataService implements DataAccessInterface<OrderEntity>
 	 */
 	public boolean update(OrderEntity order)
 	{
+		logger.info("Entering OrdersDataService.update()");
+	        logger.info("In the OrdersDataService.update()");
+	        logger.info("Exiting OrdersDataService.update()");
 		return true;
 	}
 	
@@ -105,6 +125,9 @@ public class OrdersDataService implements DataAccessInterface<OrderEntity>
 	 */
 	public boolean delete(OrderEntity order)
 	{
+		logger.info("Entering OrdersDataService.delete()");
+	        logger.info("In the OrdersDataService.delete()");
+	        logger.info("Exiting OrdersDataService.delete()");
 		return false;
 	}
 }
