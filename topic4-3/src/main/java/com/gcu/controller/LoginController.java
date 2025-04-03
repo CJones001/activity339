@@ -22,7 +22,7 @@ import com.gcu.model.OrderModel;
 @RequestMapping("/login")
 public class LoginController
 {
-	private static final Logger logger = LoggerFactory.getLogger(OrdersBusinessService.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
 	private OrdersBusinessServiceInterface service;
