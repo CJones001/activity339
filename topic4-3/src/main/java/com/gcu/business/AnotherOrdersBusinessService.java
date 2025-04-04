@@ -34,7 +34,6 @@ public class AnotherOrdersBusinessService implements OrdersBusinessServiceInterf
 		logger.info("Entering AnotherOrdersBusinessService.test()");
 		logger.info("In the AnotherOrdersBusinessService.test()");
 		logger.info("Exiting AnotherOrdersBusinessService.test()");
-		System.out.println("Hello from the AnotherOrdersBusinessService");
 	}
 	
 	@Override
