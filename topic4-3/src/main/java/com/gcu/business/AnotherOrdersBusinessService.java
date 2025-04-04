@@ -16,7 +16,6 @@ public class AnotherOrdersBusinessService implements OrdersBusinessServiceInterf
 		logger.info("Entering AnotherOrdersBusinessService.init()");
 		logger.info("In the AnotherOrdersBusinessService.init()");
 		logger.info("Exiting AnotherOrdersBusinessService.init()");
-		System.out.println("In the AnotherOrdersBusinessService.init()");
 	}
 	
 	@Override
